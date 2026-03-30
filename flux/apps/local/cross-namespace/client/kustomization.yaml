@@ -4,3 +4,4 @@ namespace: tenant-a
 resources:
   - namespace.yaml
   - deployment.yaml
+  - serviceaccount.yaml
