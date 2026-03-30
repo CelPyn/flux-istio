@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+spec: { }
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: restricted-egress
+spec:
+  action: DENY
+  rules:
+    - to:
+        - operation:
+            notHosts: [ "google.com", "www.google.com" ]

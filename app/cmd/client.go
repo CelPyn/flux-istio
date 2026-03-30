@@ -48,7 +48,7 @@ func serveProbes() {
 
 func callHTTP(destination string, client *http.Client) {
 	log.Info().Msg("Calling endpoint")
-	url := fmt.Sprintf("%s/http", destination)
+	url := fmt.Sprintf("%s", destination)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to create request")
