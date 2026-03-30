@@ -4,3 +4,4 @@ namespace: tenant-b
 resources:
   - namespace.yaml
   - deployment.yaml
+  - service.yaml
