@@ -2,6 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 CLUSTER_NAME="local"
 
 # Create the cluster if it doesn't already exist
@@ -23,3 +24,11 @@ helm upgrade --install flux-operator \
 
 # Apply the FluxInstance to install Flux controllers
 kubectl apply --context "${KUBE_CONTEXT}" -f "${SCRIPT_DIR}/flux-instance.yaml"
+
+# Build and load app images into the cluster
+for variant in server client; do
+  echo "Building ${variant} image..."
+  docker build --build-arg VARIANT="${variant}" -t "${variant}:latest" "${REPO_DIR}/app"
+  echo "Loading ${variant} image into kind cluster..."
+  kind load docker-image "${variant}:latest" --name "${CLUSTER_NAME}"
+done
