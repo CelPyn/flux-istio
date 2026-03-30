@@ -13,5 +13,3 @@ spec:
   path: ./flux/apps/local
   prune: true
   wait: true
-  dependsOn:
-    - name: infrastructure-configs
