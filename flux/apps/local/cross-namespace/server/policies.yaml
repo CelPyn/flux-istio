@@ -2,4 +2,16 @@ apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: deny-all
-spec: {}
+spec: { }
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-tenant-a
+spec:
+  action: ALLOW
+  rules:
+    - from:
+      - source:
+          serviceAccounts: [ "tenant-a/client" ]
+          namespaces: [ "tenant-a" ]

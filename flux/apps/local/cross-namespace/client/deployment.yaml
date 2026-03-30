@@ -15,6 +15,7 @@ spec:
       labels:
         app: client
     spec:
+      serviceAccountName: client
       containers:
         - name: client
           image: client:latest
