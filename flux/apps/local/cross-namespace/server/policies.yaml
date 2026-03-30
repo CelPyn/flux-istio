@@ -14,4 +14,3 @@ spec:
     - from:
       - source:
           serviceAccounts: [ "tenant-a/client" ]
-          namespaces: [ "tenant-a" ]
