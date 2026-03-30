@@ -4,3 +4,4 @@ resources:
   - same-namespace
   - cross-namespace
   - egress
+  - ingress
